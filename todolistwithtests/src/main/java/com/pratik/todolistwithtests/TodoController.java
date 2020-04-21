@@ -3,6 +3,8 @@
  */
 package com.pratik.todolistwithtests;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,11 +24,12 @@ public class TodoController {
 	}
 	
 	@PostMapping("/addTodo")
-	public TodoItem createTodoItem(@RequestBody TodoItem todoItem) {
+	public ResponseEntity<TodoItem> createTodoItem(@RequestBody TodoItem todoItem) {
 		
-		TodoItem item = new TodoItem();
+		TodoItem item = TodoItem.builder().id("123").name("drink water").status("pending").build();
 		
-		return item;
+		ResponseEntity<TodoItem> responseEntity = new ResponseEntity<TodoItem>(item,HttpStatus.CREATED);
+		return responseEntity;
 	}
 
 }

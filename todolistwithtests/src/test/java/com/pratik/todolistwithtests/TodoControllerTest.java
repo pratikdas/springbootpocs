@@ -50,10 +50,9 @@ class TodoControllerTest {
 	
 	@Test
 	void createTodoItem_with_valid_data() throws Exception {
-		TodoItem todoItem = new TodoItem();
-		todoItem.setId("uyyyu");
+		TodoItem todoItem = TodoItem.builder().id("123").name("drink water").status("pending").build();
 		
-		mvc.perform(MockMvcRequestBuilders.post("/create")
+		mvc.perform(MockMvcRequestBuilders.post("/addTodo")
 				    .content(asJson(todoItem))
 				    .contentType(MediaType.APPLICATION_JSON)
 				    .accept(MediaType.APPLICATION_JSON))
