@@ -28,11 +28,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  *
  */
 @ExtendWith(SpringExtension.class)
-@WebMvcTest
+@WebMvcTest(controllers = {TodoController.class, TodoService.class})
 class TodoControllerTest {
 	
 	@Autowired
 	private MockMvc mvc;
+	
 
 	@Test
 	void fetchAnyTodoItem_for_default() throws Exception {
